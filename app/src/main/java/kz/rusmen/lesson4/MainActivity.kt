@@ -38,14 +38,13 @@ class MainActivity : ComponentActivity() {
 fun PostsPage(modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = modifier
-            .padding(horizontal = 16.dp, vertical = 32.dp)
+            .padding(horizontal = 16.dp, vertical = 24.dp)
     ) {
         items(5) {
             Posts(
                 title = "Post Title",
                 content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu arcu, tristique in orci sed, volutpat auctor risus. Donec convallis maximus auctor. Etiam id dui at libero porttitor mollis vel eget lacus. Nullam molestie magna at eros pretium, a elementum libero lobortis. Cras eu consectetur mi. Proin iaculis, ex vitae malesuada vehicula, erat sem aliquam leo, ac porttitor mauris turpis eu mi. Suspendisse sed est pretium, malesuada diam et, vehicula ligula. Duis consequat in purus et tincidunt. Donec odio velit, dapibus a elit a, feugiat tempor neque. Donec convallis, tellus eu vestibulum porta, mauris metus imperdiet orci, sit amet viverra leo orci sed purus. Nunc pretium quam ut vehicula pellentesque."
             )
-            Spacer(modifier = modifier.height(16.dp))
         }
     }
 }
@@ -54,7 +53,8 @@ fun PostsPage(modifier: Modifier = Modifier) {
 fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
     Surface(
         shadowElevation = 4.dp,
-        shape = RoundedCornerShape(corner = CornerSize(8.dp))
+        shape = RoundedCornerShape(corner = CornerSize(8.dp)),
+        modifier = Modifier.padding(vertical = 8.dp)
     ) {
         Column(
             modifier = modifier
