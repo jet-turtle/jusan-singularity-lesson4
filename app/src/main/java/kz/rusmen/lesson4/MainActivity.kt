@@ -16,6 +16,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,6 +35,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+val tahomaFontFamily = FontFamily(
+    Font(R.font.tahoma_regular, FontWeight(400)),
+    Font(R.font.tahoma_bold, FontWeight(700))
+)
 
 @Composable
 fun PostsPage(modifier: Modifier = Modifier) {
@@ -63,6 +70,7 @@ fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
         ) {
             Text(
                 text = title,
+                fontFamily = tahomaFontFamily,
                 fontWeight = FontWeight(700),
                 fontSize = 18.sp,
                 lineHeight = 21.73.sp,
@@ -71,6 +79,7 @@ fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
             Spacer(modifier = modifier.height(16.dp))
             Text(
                 text = content,
+                fontFamily = tahomaFontFamily,
                 fontWeight = FontWeight(400),
                 fontSize = 16.sp,
                 lineHeight = 19.31.sp,
