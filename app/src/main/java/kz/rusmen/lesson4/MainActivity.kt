@@ -19,6 +19,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -65,7 +66,7 @@ fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
     ) {
         Column(
             modifier = modifier
-                .height(165.dp)
+                .height(170.dp)
                 .padding(16.dp)
         ) {
             Text(
@@ -83,7 +84,9 @@ fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
                 fontWeight = FontWeight(400),
                 fontSize = 16.sp,
                 lineHeight = 19.31.sp,
-                color = colorResource(R.color.text_02)
+                color = colorResource(R.color.text_02),
+                maxLines = 5,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
