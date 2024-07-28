@@ -70,7 +70,7 @@ fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
     ) {
         Column(
             modifier = modifier
-                .heightIn(min = 165.dp, max = 180.dp)
+                .heightIn(max = 180.dp)
                 .padding(16.dp)
         ) {
             Text(
