@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
@@ -62,11 +64,13 @@ fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
     Surface(
         shadowElevation = 4.dp,
         shape = RoundedCornerShape(corner = CornerSize(8.dp)),
-        modifier = Modifier.padding(vertical = 8.dp)
+        modifier = Modifier
+            .padding(vertical = 8.dp)
+            .fillMaxWidth()
     ) {
         Column(
             modifier = modifier
-                .height(170.dp)
+                .heightIn(min = 165.dp, max = 180.dp)
                 .padding(16.dp)
         ) {
             Text(
