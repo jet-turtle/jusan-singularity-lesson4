@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.Font
@@ -25,6 +26,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kz.rusmen.lesson4.ui.theme.Lesson4Theme
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +35,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Lesson4Theme {
-                PostsPage()
+                PostsPageScreen()
             }
         }
     }
@@ -45,15 +47,28 @@ val tahomaFontFamily = FontFamily(
 )
 
 @Composable
-fun PostsPage(modifier: Modifier = Modifier) {
+fun PostsPageScreen() {
+    val viewModel = viewModel(modelClass = PostViewModel::class.java)
+    val state by viewModel.state
+
+    PostsPageContent(
+        state = state
+    )
+}
+
+@Composable
+fun PostsPageContent(
+    state: PostState,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
     ) {
-        items(5) {
+        items(state.numbers) {number ->
             Posts(
-                title = "Post Title",
-                content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu arcu, tristique in orci sed, volutpat auctor risus. Donec convallis maximus auctor. Etiam id dui at libero porttitor mollis vel eget lacus. Nullam molestie magna at eros pretium, a elementum libero lobortis. Cras eu consectetur mi. Proin iaculis, ex vitae malesuada vehicula, erat sem aliquam leo, ac porttitor mauris turpis eu mi. Suspendisse sed est pretium, malesuada diam et, vehicula ligula. Duis consequat in purus et tincidunt. Donec odio velit, dapibus a elit a, feugiat tempor neque. Donec convallis, tellus eu vestibulum porta, mauris metus imperdiet orci, sit amet viverra leo orci sed purus. Nunc pretium quam ut vehicula pellentesque."
+                title = "${state.title} ${number + 1}",
+                content = state.content
             )
         }
     }
@@ -103,6 +118,6 @@ fun Posts(title: String, content: String, modifier: Modifier = Modifier) {
 @Composable
 fun Lesson4Preview() {
     Lesson4Theme {
-        PostsPage()
+        PostsPageScreen()
     }
 }
